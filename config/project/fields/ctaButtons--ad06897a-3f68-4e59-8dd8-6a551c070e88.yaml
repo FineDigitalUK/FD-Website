@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: ctaButtons
+instructions: null
+name: 'Call to Action'
+searchable: false
+settings:
+  createButtonLabel: 'Add New Button'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 13030367-75b1-4224-9106-d1244c54cc43 # Call to Action
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

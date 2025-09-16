@@ -1,0 +1,60 @@
+{# CTA Button Component for Craft 5 Entries Field #}
+{# Usage for single CTA: {% include 'components/cta-button' with { 'cta': ctaEntry } %} #}
+{# Usage for entries field: {% include 'components/cta-button' with { 'ctas': entry.ctaButtons } %} #}
+
+{# Multiple CTAs rendering #}
+{% if ctas is defined and ctas|length %}
+  {% set layout = layout ?? 'horizontal' %}
+  {% set spacing = spacing ?? 'gap-4' %}
+  
+  {# Layout classes #}
+  {% set layoutClasses = {
+    'horizontal': 'flex flex-wrap ' ~ spacing,
+    'vertical': 'flex flex-col ' ~ spacing,
+    'centered': 'flex flex-wrap justify-center ' ~ spacing
+  } %}
+
+  <div class="{{ layoutClasses[layout] }}">
+    {% for ctaEntry in ctas %}
+      {# Render each CTA directly without recursive include #}
+      {% set buttonText = ctaEntry.linkText %}
+      {% set buttonUrl = ctaEntry.urlAddress %}
+      {% set buttonType = ctaEntry.buttonType %}
+
+      {# Button type classes - using your original styles #}
+      {% set typeClasses = {
+        'normal': 'px-6 py-3 bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 rounded-lg transition-all',
+        'cta': 'px-8 py-4 bg-brand text-white font-bold rounded-xl shadow-lg hover:bg-brand/90 transition transform hover:-translate-y-1 hover:scale-105',
+        'ctaAlt': 'px-8 py-4 bg-white/20 border border-white/30 text-white font-bold rounded-xl shadow-lg hover:bg-white/40 transition transform hover:-translate-y-1 hover:scale-105 backdrop-blur'
+      } %}
+
+      {# Render the button #}
+      {% if buttonText and buttonUrl %}
+        <a href="{{ buttonUrl }}" class="{{ typeClasses[buttonType] }}">
+          {{ buttonText }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{# Single CTA rendering #}
+{% if cta is defined %}
+  {% set buttonText = cta.linkText %}
+  {% set buttonUrl = cta.urlAddress %}
+  {% set buttonType = cta.buttonType %}
+
+  {# Button type classes - using your original styles #}
+  {% set typeClasses = {
+    'normal': 'px-6 py-3 bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 rounded-lg transition-all',
+    'cta': 'px-8 py-4 bg-brand text-white font-bold rounded-xl shadow-lg hover:bg-brand/90 transition transform hover:-translate-y-1 hover:scale-105',
+    'ctaAlt': 'px-8 py-4 bg-white/20 border border-white/30 text-white font-bold rounded-xl shadow-lg hover:bg-white/40 transition transform hover:-translate-y-1 hover:scale-105 backdrop-blur'
+  } %}
+
+  {# Render the button #}
+  {% if buttonText and buttonUrl %}
+    <a href="{{ buttonUrl }}" class="{{ typeClasses[buttonType] }}">
+      {{ buttonText }}
+    </a>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en
+name: 'Fine Digital'
+primary: true
+siteGroup: ea9e13a0-c734-466e-b4da-e96997d32dbf # Fine Digital
+sortOrder: 1

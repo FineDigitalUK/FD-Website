@@ -1,0 +1,74 @@
+dateModified: 1752398064
+email:
+  fromEmail: lubo.jordanov@gmail.com
+  fromName: 'Fine Digital'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/assets/images'
+    type: craft\fs\Local
+    url: $PRIMARY_SITE_URL/assets/images
+meta:
+  __names__:
+    2c90d339-319f-41d1-96cf-1c889863fef2: URL # URL
+    3d54c233-d443-46e3-8ec7-850ab1c9d69a: Image # Image
+    6a3879bd-c2fc-4069-a70f-3720e125a496: 'Fine Digital' # Fine Digital
+    24b1eeee-2cc0-4c0f-a7a5-028ca91a32f3: Homepage # Homepage
+    33dabbd5-4d93-4868-bee3-62998def8ddc: 'Text Area' # Text Area
+    852d5794-44c6-4ccc-becc-23c13c551f67: 'Footer Nav' # Footer Nav
+    46639d9c-2fb8-477e-85aa-2910d7e89d87: Simple # Simple
+    13030367-75b1-4224-9106-d1244c54cc43: 'Call to Action' # Call to Action
+    a580fa9f-fec5-4030-9ec4-056fa41939f4: 'Plain Text ' # Plain Text 
+    ad06897a-3f68-4e59-8dd8-6a551c070e88: 'Call to Action' # Call to Action
+    bb28314d-a061-45be-bebf-8b0a6076b3d0: 'Button Type' # Button Type
+    d2ea8d0a-88c0-4325-9a19-ed218689f061: 'Public Schema' # Public Schema
+    de4e6ba3-84ff-4825-9f58-5cb381127cac: Images # Images
+    e7bfc324-8b18-4281-b77b-666ba9db6ce2: 'Main Nav' # Main Nav
+    ea9e13a0-c734-466e-b4da-e96997d32dbf: 'Fine Digital' # Fine Digital
+    f1c7e864-914a-44b3-8480-1a3fc4f46b09: Homepage # Homepage
+plugins:
+  blocksmith:
+    edition: lite
+    enabled: true
+    schemaVersion: 1.1.4
+    settings:
+      enableCardsSupport: true
+      previewImageSubfolder: null
+      previewImageVolume: null
+      previewStorageMode: null
+      useEntryTypeGroups: false
+      useHandleBasedPreviews: false
+      wideViewFourBlocks: false
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey: MHFT6YWF45QAVKP3ST3LN0CL
+    schemaVersion: 2.1.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Fine Digital'
+  schemaVersion: 5.8.0.3
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

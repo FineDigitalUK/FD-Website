@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: buttonUrl
+instructions: null
+name: URL
+searchable: false
+settings:
+  advancedFields:
+    - target
+    - title
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: false
+  typeSettings:
+    __assoc__:
+      -
+        - entry
+        -
+          __assoc__:
+            -
+              - sources
+              - '*'
+            -
+              - showUnpermittedSections
+              - ''
+            -
+              - showUnpermittedEntries
+              - ''
+      -
+        - url
+        -
+          __assoc__:
+            -
+              - allowRootRelativeUrls
+              - '1'
+            -
+              - allowAnchors
+              - '1'
+            -
+              - allowCustomSchemes
+              - ''
+  types:
+    - entry
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

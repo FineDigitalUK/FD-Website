@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    
+    <!-- Critical CSS - Only essential styles inline -->
+    <style>
+        /* Critical above-the-fold styles only */
+        body { 
+            margin: 0; 
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            transition: background-color 0.3s ease;
+        }
+        .dark body { 
+            background-color: #181c2a; 
+        }
+        
+        /* Critical navigation styles to prevent layout shift */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-overlay {
+            background: transparent;
+            backdrop-filter: none;
+        }
+        
+        .nav-overlay.scrolled {
+            background: rgba(24, 28, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-solid {
+            background: rgba(24, 28, 42, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Prevent flash of unstyled content */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Hide content until fonts/CSS load */
+        .content-wrapper {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .content-loaded .content-wrapper {
+            opacity: 1;
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    {% if craft.app.config.env == 'dev' %}
+        <link rel="preload" href="http://localhost:5173/src/css/app.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="http://localhost:5173/src/css/app.css"></noscript>
+    {% else %}
+        <link rel="preload" href="{{ siteUrl }}dist/assets/app.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="{{ siteUrl }}dist/assets/app.css"></noscript>
+    {% endif %}
+    
+    <!-- Load CSS asynchronously -->
+    {% if craft.app.config.env == 'dev' %}
+        <link rel="stylesheet" href="http://localhost:5173/src/css/app.css" media="print" onload="this.media='all'">
+    {% else %}
+        <link rel="stylesheet" href="{{ siteUrl }}dist/assets/app.css" media="print" onload="this.media='all'">
+    {% endif %}
+    
+    <!-- Preload JavaScript -->
+    {% if craft.app.config.env == 'dev' %}
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <link rel="modulepreload" href="http://localhost:5173/src/js/app.js">
+    {% endif %}
+</head>
+<body>
+    
+    {# Determine if this is the homepage #}
+  
+    {% set isHomepage = (entry is defined and entry.slug == '__home__') or craft.app.request.pathInfo == '' %}
+
+    <!-- Content wrapper for loading states -->
+    <div class="content-wrapper">
+        
+        {# Navigation - Different styles for homepage vs other pages #}
+        {% if isHomepage %}
+            <!-- HOMEPAGE NAVIGATION - Overlay style with sticky scroll -->
+            <nav id="homepage-nav" class="nav-overlay py-4">
+                <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                    
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="{{ siteUrl }}" class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">F</span>
+                            </div>
+                            {# <div class="w-10 h-10  rounded-lg flex items-center justify-center">
+                            <img src="{{ siteUrl }}assets\layout\logo.webp" alt="Fine Digital Logo" class="w-8 h-8 object-contain" loading="lazy">
+                            </div> #}
+   
+                            <span class="text-white font-bold text-xl">Fine Digital</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        {% set navNodes = craft.navigation.nodes().handle('mainNav').level(1).all() %}
+                        {% for node in navNodes %}
+                            {% if node.buttonType != 'cta' %}
+                                {% set hasChildren = node.children|length %}
+                                
+                                {% if hasChildren %}
+                                    <!-- Parent with dropdown -->
+                                    <div class="relative group">
+                                        <button class="text-white/90 hover:text-brand transition-colors font-medium flex items-center gap-1">
+                                            {{ node.title }}
+                                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </button>
+                                        
+                                        <!-- Dropdown menu -->
+                                        <div class="absolute top-full  left-0 bg-white shadow-lg rounded-lg py-3 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 mt-2">
+                                            {% for child in node.children %}
+                                                <a href="{{ child.url }}" class="block px-5 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors">
+                                                    {{ child.title }}
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <!-- Regular link (no children) -->
+                                    <a href="{{ node.url }}" class="text-white/90 hover:text-brand transition-colors font-medium">
+                                        {{ node.title }}
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="hidden lg:flex items-center gap-4">
+                        {% set navNodes = craft.navigation.nodes().handle('mainNav').all() %}
+                        {% for node in navNodes %}
+                            {% if node.buttonType == 'cta' %} {# Show CTA button here #}
+                                <a href="{{ node.url }}" class="px-6 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand/90 transition-all transform hover:scale-105">
+                                    {{ node.title }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="lg:hidden p-2 text-white hover:text-brand transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Overlay for Homepage -->
+            <div id="mobile-menu-overlay" class="mobile-menu fixed inset-0 z-40 lg:hidden">
+                <div class="absolute inset-0 bg-navy/95 backdrop-blur-lg"></div>
+                <div class="relative h-full flex flex-col justify-center items-center space-y-8">
+                    {% set navNodes = craft.navigation.nodes().handle('mainNav').level(1).all() %}
+                    {% for node in navNodes %}
+                        {% if node.buttonType != 'cta' %}
+                            {% set hasChildren = node.children|length %}
+                            
+                            {% if hasChildren %}
+                                <!-- Parent with expandable children -->
+                                <div class="text-center mb-4">
+                                    <button class="text-white text-2xl ml-[20px] font-semibold hover:text-brand transition-colors" 
+                                            onclick="toggleSubmenu(this)">
+                                        {{ node.title }}
+                                        <svg class="w-5 h-5 transition-transform inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- Submenu -->
+                                    <div class="submenu max-h-0 overflow-hidden transition-all duration-300 mt-4">
+                                        {% for child in node.children %}
+                                            <a href="{{ child.url }}" class="block py-2 text-white/80 hover:text-brand transition-colors text-lg">
+                                                {{ child.title }}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <!-- Regular link -->
+                                <a href="{{ node.url }}" class="text-white text-2xl font-semibold hover:text-brand transition-colors">{{ node.title }}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- Mobile CTA -->
+                    {% set navNodes = craft.navigation.nodes().handle('mainNav').all() %}
+                    {% for node in navNodes %}
+                        {% if node.buttonType == 'cta' %}
+                            <a href="{{ node.url }}" class="mt-8 px-8 py-4 bg-brand text-white font-bold rounded-lg hover:bg-brand/90 transition-all transform hover:scale-105">
+                                {{ node.title }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- Close Button -->
+                    <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-white hover:text-brand transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+        {% else %}
+            <!-- OTHER PAGES NAVIGATION - Solid style -->
+            <nav class="nav-solid py-4">
+                <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                    
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="{{ siteUrl }}" class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">F</span> 
+                            </div>
+                            <span class="text-white font-bold text-xl">Fine Digital</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        {% set navNodes = craft.navigation.nodes().handle('mainNav').level(1).all() %}
+                        {% for node in navNodes %}
+                            {% if node.buttonType != 'cta' %}
+                                {% set hasChildren = node.children|length %}
+                                
+                                {% if hasChildren %}
+                                    <!-- Parent with dropdown -->
+                                    <div class="relative group">
+                                        <button class="text-white/90 hover:text-brand transition-colors font-medium flex items-center gap-1">
+                                            {{ node.title }}
+                                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </button>
+                                        
+                                        <!-- Dropdown menu -->
+                                        <div class="absolute top-full left-0 bg-white shadow-lg rounded-lg py-3 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 mt-2">
+                                            {% for child in node.children %}
+                                                <a href="{{ child.url }}" class="block px-5 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors">
+                                                    {{ child.title }}
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <!-- Regular link (no children) -->
+                                    <a href="{{ node.url }}" class="text-white/90 hover:text-brand transition-colors font-medium">
+                                        {{ node.title }}
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="hidden lg:flex items-center gap-4">
+                        {% set navNodes = craft.navigation.nodes().handle('mainNav').all() %}
+                        {% for node in navNodes %}
+                            {% if node.buttonType == 'cta' %}
+                                <a href="{{ node.url }}" class="px-6 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand/90 transition-all transform hover:scale-105">
+                                    {{ node.title }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button-inner" class="lg:hidden p-2 text-white hover:text-brand transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Overlay for Other Pages -->
+            <div id="mobile-menu-overlay-inner" class="mobile-menu fixed inset-0 z-40 lg:hidden">
+                <div class="absolute inset-0 bg-navy/95 backdrop-blur-lg"></div>
+                <div class="relative h-full flex flex-col justify-center items-center space-y-8">
+                    {% set navNodes = craft.navigation.nodes().handle('mainNav').level(1).all() %}
+                    {% for node in navNodes %}
+                        {% if node.buttonType != 'cta' %}
+                            {% set hasChildren = node.children|length %}
+                            
+                            {% if hasChildren %}
+                                <!-- Parent with expandable children -->
+                                <div class="text-center mb-4">
+                                    <button class="text-white text-2xl font-semibold hover:text-brand transition-colors" 
+                                            onclick="toggleSubmenu(this)">
+                                        {{ node.title }}
+                                        <svg class="w-5 h-5 transition-transform inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- Submenu -->
+                                    <div class="submenu max-h-0 overflow-hidden transition-all duration-300 mt-4">
+                                        {% for child in node.children %}
+                                            <a href="{{ child.url }}" class="block py-2 text-white/80 hover:text-brand transition-colors text-lg">
+                                                {{ child.title }}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <!-- Regular link -->
+                                <a href="{{ node.url }}" class="text-white text-2xl font-semibold hover:text-brand transition-colors">{{ node.title }}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- Mobile CTA -->
+                    {% set navNodes = craft.navigation.nodes().handle('mainNav').all() %}
+                    {% for node in navNodes %}
+                        {% if node.buttonType == 'cta' %}
+                            <a href="{{ node.url }}" class="mt-8 px-8 py-4 bg-brand text-white font-bold rounded-lg hover:bg-brand/90 transition-all transform hover:scale-105">
+                                {{ node.title }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- Close Button -->
+                    <button id="mobile-menu-close-inner" class="absolute top-6 right-6 p-2 text-white hover:text-brand transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Page Content Spacer for Fixed Nav -->
+            <div class="pt-20"></div>
+        {% endif %}
+        
+        <!-- Main Content -->
+        {% block content %}{% endblock %}
+        
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-navy text-white pt-16 pb-8 border-t-4 border-brand">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Logo & Social -->
+        <div class="flex flex-col items-center md:items-start">
+          <div class="flex flex-col items-center md:items-start">
+            <div class="w-14 h-14 rounded-lg flex items-center justify-center mb-2">
+              <img src="/assets/layout/logo.webp" alt="Fine Digital Logo" class="w-full h-full object-contain" loading="lazy">
+            </div>
+            <span class="text-white font-bold text-lg mb-4">Fine Digital</span>
+            <div class="flex gap-4 mt-2">
+              <a href="#" aria-label="Instagram" class="hover:text-brand transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="hover:text-brand transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 8a6 6 0 0 1 6 6v5h-4v-5a2 2 0 0 0-4 0v5h-4v-9h4v1.5"/>
+                  <line x1="8" y1="11" x2="8" y2="16"/>
+                  <line x1="8" y1="8" x2="8" y2="8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Quick Links -->
+            <!-- Quick Links -->
+            <div class="flex flex-col items-center md:items-start">
+            <h3 class="text-lg font-bold mb-4 text-brand">Quick Links</h3>
+            <ul class="space-y-2 text-white/90">
+                {% set footerNavNodes = craft.navigation.nodes().handle('footerNav').all() %}
+                {% for node in footerNavNodes %}
+                <li><a href="{{ node.url }}" class="hover:text-brand transition-colors">{{ node.title }}</a></li>
+                {% endfor %}
+            </ul>
+            </div>
+
+        
+        <!-- Contact Form -->
+        <div class="flex flex-col items-center md:items-start">
+          <h3 class="text-lg font-bold mb-4 text-brand">Contact</h3>
+          <form class="w-full max-w-xs space-y-3">
+            <input type="text" name="name" placeholder="Name" class="w-full px-4 py-2 rounded-lg bg-slate-800 text-white border border-slate-700 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition" required>
+            <input type="email" name="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg bg-slate-800 text-white border border-slate-700 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition" required>
+            <textarea name="message" placeholder="Message" rows="3" class="w-full px-4 py-2 rounded-lg bg-slate-800 text-white border border-slate-700 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none transition" required></textarea>
+            <button type="submit" class="w-full px-4 py-2 rounded-lg bg-brand text-white font-bold hover:bg-brand/90 transition">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-12 text-center text-white/60 text-sm">
+        &copy; {{ "now"|date("Y") }} Fine Digital. All rights reserved.
+      </div>
+    </footer>
+    
+    <!-- Load JavaScript at the end for better performance -->
+    {% if craft.app.config.env == 'dev' %}
+        <script type="module" src="http://localhost:5173/src/js/app.js"></script>
+    {% else %}
+        <script type="module" src="{{ siteUrl }}dist/assets/app.js"></script>
+    {% endif %}
+    
+    
+    <!-- Inline only essential JavaScript -->
+    <script>
+        // Mark content as loaded to prevent FOUC
+        document.documentElement.classList.add('content-loaded');
+        
+        // Mobile submenu toggle function
+        function toggleSubmenu(button) {
+            const submenu = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            
+            if (submenu.style.maxHeight && submenu.style.maxHeight !== '0px') {
+                submenu.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+/web/dist/
+/node_modules/
+.env.local
+{# Vite assets - automatically handles dev vs production #}
+{{ vite.script('src/js/app.js') }}

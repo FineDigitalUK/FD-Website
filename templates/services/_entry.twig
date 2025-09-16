@@ -1,0 +1,453 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+
+<!-- Hero Section -->
+{% include "template-parts/components/hero.twig" %}
+
+
+<!-- Services Section -->   
+<section id="services" class="relative py-32 overflow-hidden">
+    <!-- Premium Background -->
+    <div class="absolute inset-0 luxury-gradient"></div>
+    
+    <!-- Floating Orbs -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-brand/15 to-blue/10 rounded-full blur-3xl floating-orb"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-blue/10 to-brand/8 rounded-full blur-3xl floating-orb-delayed"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-brand/8 to-blue/6 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Premium Heading -->
+        <div class="text-center mb-20">
+            <h2 class="text-6xl md:text-7xl font-black mb-6 tracking-tight">
+                <span class="text-gradient">Elevate Your</span>
+                <br>
+                <span class="text-slate-900 glow-effect">Digital Excellence</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-brand to-blue mx-auto rounded-full"></div>
+            <p class="text-xl text-slate-600 mt-8 max-w-2xl mx-auto leading-relaxed">
+                Transform your digital presence with our premium suite of services designed for visionary businesses
+            </p>
+        </div>
+        
+        <!-- Premium Cards Grid -->
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Web Design Card -->
+            <div class="group relative card-hover-effect transition-all duration-300 ease-out">
+                <!-- Card Background -->
+                <div class="glass-effect premium-shadow group-hover:premium-shadow-hover rounded-3xl p-10 h-full flex flex-col items-center text-center transition-all duration-300 shimmer">
+                    
+                    <!-- Premium Icon -->
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 icon-brand rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <!-- Floating particles -->
+                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-bounce delay-75"></div>
+                        <div class="absolute -bottom-2 -left-2 w-3 h-3 bg-pink-400 rounded-full animate-bounce delay-150"></div>
+                    </div>
+                    
+                    <h3 class="text-3xl font-bold text-slate-900 mb-6 group-hover:text-brand transition-colors duration-300">
+                        Web Design
+                    </h3>
+                    
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg group-hover:text-slate-700 transition-colors duration-300">
+                        Crafting extraordinary digital experiences that captivate audiences and drive business growth through cutting-edge design principles.
+                    </p>
+                    
+                    <!-- Fixed Premium CTA -->
+                    <div class="mt-auto">
+                        <a href="#" class="premium-btn bg-brand">
+                            <span>Discover More</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hover Glow Effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-brand/15 to-blue/15 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+            </div>
+            
+            <!-- Google Ads Card -->
+            <div class="group relative card-hover-effect transition-all duration-300 ease-out">
+                <div class="glass-effect premium-shadow group-hover:premium-shadow-hover rounded-3xl p-10 h-full flex flex-col items-center text-center transition-all duration-300 shimmer">
+                    
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 icon-blue rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-2 -left-2 w-4 h-4 bg-brand rounded-full animate-bounce delay-100"></div>
+                        <div class="absolute -bottom-2 -right-2 w-3 h-3 bg-blue rounded-full animate-bounce delay-200"></div>
+                    </div>
+                    
+                    <h3 class="text-3xl font-bold text-slate-900 mb-6 group-hover:text-brand transition-colors duration-300">
+                        Google Ads
+                    </h3>
+                    
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg group-hover:text-slate-700 transition-colors duration-300">
+                        Strategic advertising campaigns that deliver precision-targeted results and maximize ROI through data-driven optimization.
+                    </p>
+                    
+                    <!-- Fixed Button -->
+                    <div class="mt-auto">
+                        <a href="#" class="premium-btn bg-blue">
+                            <span>Explore Solutions</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-blue/15 to-brand/15 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+            </div>
+            
+            <!-- SEO Card -->
+            <div class="group relative card-hover-effect transition-all duration-700 ease-out">
+                <div class="glass-effect premium-shadow group-hover:premium-shadow-hover rounded-3xl p-10 h-full flex flex-col items-center text-center transition-all duration-700 shimmer">
+                    
+                    <div class="relative mb-8">
+                        <div class="w-20 h-20 icon-brand rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-purple-400 rounded-full animate-bounce delay-75"></div>
+                        <div class="absolute -bottom-2 -left-2 w-3 h-3 bg-orange-400 rounded-full animate-bounce delay-300"></div>
+                    </div>
+                    
+                    <h3 class="text-3xl font-bold text-slate-900 mb-6 group-hover:text-brand transition-colors duration-300">
+                        SEO Mastery
+                    </h3>
+                    
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg group-hover:text-slate-700 transition-colors duration-300">
+                        Advanced search optimization strategies that elevate your digital visibility and attract high-quality organic traffic.
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <a href="#" class="premium-btn bg-brand">
+                            <span>Start Growing</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-brand/15 to-blue/15 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section (Alternate Color: Light, Clean, Brand Accent) -->
+<section class="relative py-24 bg-slate-100 dark:bg-navy/80">
+  <div class="absolute right-0 top-0 w-40 h-40 bg-gradient-to-br from-brand/10 to-blue/10 rounded-full blur-2xl opacity-30 pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="rounded-3xl bg-white/90 dark:bg-navy/70 shadow-xl backdrop-blur-lg border border-gray-100 dark:border-navy/40 p-12 flex flex-col lg:flex-row items-center gap-10">
+      <div class="w-80 flex-shrink-0 bg-gradient-to-br from-brand/10 to-blue/10 rounded-2xl flex items-center justify-center shadow-inner mb-8 lg:mb-0">
+        <img 
+          src="{{ siteUrl }}assets/layout/plamen.webp" 
+          alt="Plamen - Fine Digital Team" 
+          class="w-80 h-80 rounded-2xl object-cover shadow-lg border-4 border-brand/20"
+          loading="lazy"
+        >
+      </div>
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-navy dark:text-white mb-6">Why Other Clinics Choose Fine Digital</h2>
+        <ul class="space-y-4 text-lg text-charcoal dark:text-gray-200">
+          <li class="flex items-start gap-3">
+            <span class="text-brand text-xl">✓</span> 
+            <span>Specialists in Aesthetics, Dental, and Healthcare Clinic Marketing</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-brand text-xl">✓</span> 
+            <span>Proven ROI with SEO and Google Ads</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-brand text-xl">✓</span> 
+            <span>Beautiful, conversion-focused clinic websites</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-brand text-xl">✓</span> 
+            <span>Trusted by clinics across the UK & internationally</span>
+          </li>
+        </ul>
+        <a href="#contact" class="mt-8 inline-block px-8 py-3 bg-brand text-white font-bold rounded-xl shadow-lg hover:bg-brand/90 transition transform hover:-translate-y-1">More About Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Portfolio Section with Multiple Creative Layouts -->
+<section class="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-navy dark:via-charcoal dark:to-navy overflow-hidden">
+    
+    <!-- Floating Background Elements -->
+    <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-brand/20 to-blue/10 rounded-full blur-2xl opacity-60 animate-float"></div>
+    <div class="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-tr from-blue/20 to-brand/10 rounded-full blur-3xl opacity-40 animate-float-delayed"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-2 bg-gradient-to-r from-transparent via-brand/10 to-transparent blur-sm"></div>
+    
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+            <h2 class="inline-block text-4xl md:text-5xl font-bold text-navy dark:text-white tracking-tight mb-4">
+                <span class="text-brand">Our</span>
+                <span class="ml-2 text-blue-700 dark:text-blue-300">Masterpieces</span>
+            </h2>
+            <p class="text-lg md:text-xl text-charcoal/80 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                Discover how clinics have transformed their digital presence with us.
+            </p>
+        </div>
+        <!-- Creative Portfolio Grid Layout -->
+        <div class="relative">
+            
+            <!-- Featured Large Project -->
+            <div class="mb-16">
+                <div class="portfolio-item group relative overflow-hidden rounded-3xl shadow-2xl bg-white/90 dark:bg-navy/90 backdrop-blur-lg border border-gray-200/50 dark:border-navy/40 tilt-card">
+                    <div class="flex flex-col lg:flex-row">
+                        <!-- Image Side -->
+                        <div class="lg:w-2/3 relative overflow-hidden">
+                           
+                                
+                                <img  src="{{ siteUrl }}assets/layout/laservision.png"  alt="Elite Aesthetics Clinic"  class="w-full h-full object-fill" loading="lazy">
+                                <!-- Hover overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                                <!-- Floating elements -->  
+
+                                <div class="absolute top-4 right-4 w-16 h-16 bg-brand/30 rounded-full blur-xl opacity-70 group-hover:scale-150 transition-all duration-700"></div>
+                          
+                        </div>
+                        
+                        <!-- Content Side -->
+                        <div class="lg:w-1/3 p-8 lg:p-12 flex flex-col justify-center">
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 bg-brand rounded-full animate-pulse"></div>
+                                    <span class="text-brand font-semibold uppercase tracking-wide text-sm">Featured Work</span>
+                                </div>
+                                <h3 class="text-3xl font-bold text-navy dark:text-white">Laser Vision Eye Center</h3>
+                                <p class="text-charcoal/80 dark:text-gray-300 leading-relaxed">Complete digital transformation including responsive web design, SEO optimization, and Google Ads campaign that increased bookings by 340%.</p>
+                                
+                                <!-- Stats -->
+                                <div class="grid grid-cols-2 gap-4 py-4">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-brand">340%</div>
+                                        <div class="text-sm text-charcoal/60 dark:text-gray-400">Booking Increase</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-blue">250%</div>
+                                        <div class="text-sm text-charcoal/60 dark:text-gray-400">Traffic Growth</div>
+                                    </div>
+                                </div>
+                                
+                                <a href="#" class="inline-flex items-center gap-2 text-brand font-semibold hover:text-blue transition group">
+                                    View Case Study 
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <!-- 2x2 Grid of Portfolio Items with Overlayed Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item group relative tilt-card overflow-hidden rounded-3xl shadow-2xl bg-white/90 dark:bg-navy/90 backdrop-blur-lg border border-gray-200/50 dark:border-navy/40">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <img src="https://picsum.photos/800/450?random=6" alt="Plastic Surgery Clinic" class="w-full h-full object-cover">
+                        <!-- Floating elements on hover -->
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-brand/40 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-ping transition-all duration-500"></div>
+                        <div class="absolute bottom-4 right-4 w-12 h-12 bg-blue/40 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-pulse transition-all duration-700"></div>
+                    </div>
+                    <!-- Content overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+                        <div class="p-8 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h5 class="text-xl font-bold mb-2">Premium Transformation</h5>
+                            <p class="mb-4 opacity-90">Luxury website design with advanced booking system and patient management portal.</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="px-4 py-2 bg-brand rounded-lg hover:bg-brand/90 transition text-sm">Case Study</a>
+                                <a href="#" class="px-4 py-2 border border-white/30 rounded-lg hover:bg-white/10 transition text-sm">Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item group relative tilt-card overflow-hidden rounded-3xl shadow-2xl bg-white/90 dark:bg-navy/90 backdrop-blur-lg border border-gray-200/50 dark:border-navy/40">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <img src="https://picsum.photos/800/450?random=7" alt="Dental Clinic" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-brand/40 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-ping transition-all duration-500"></div>
+                        <div class="absolute bottom-4 right-4 w-12 h-12 bg-blue/40 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-pulse transition-all duration-700"></div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+                        <div class="p-8 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h5 class="text-xl font-bold mb-2">Smile Makeover</h5>
+                            <p class="mb-4 opacity-90">Modern dental website with online appointment scheduling and patient education resources.</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="px-4 py-2 bg-brand rounded-lg hover:bg-brand/90 transition text-sm">Case Study</a>
+                                <a href="#" class="px-4 py-2 border border-white/30 rounded-lg hover:bg-white/10 transition text-sm">Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item group relative tilt-card overflow-hidden rounded-3xl shadow-2xl bg-white/90 dark:bg-navy/90 backdrop-blur-lg border border-gray-200/50 dark:border-navy/40">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <img src="https://picsum.photos/800/450?random=8" alt="Wellness Spa" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-brand/40 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-ping transition-all duration-500"></div>
+                        <div class="absolute bottom-4 right-4 w-12 h-12 bg-blue/40 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-pulse transition-all duration-700"></div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+                        <div class="p-8 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h5 class="text-xl font-bold mb-2">Wellness Spa Launch</h5>
+                            <p class="mb-4 opacity-90">Elegant spa site with e-commerce for gift cards and integrated reviews.</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="px-4 py-2 bg-brand rounded-lg hover:bg-brand/90 transition text-sm">Case Study</a>
+                                <a href="#" class="px-4 py-2 border border-white/30 rounded-lg hover:bg-white/10 transition text-sm">Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item group relative tilt-card overflow-hidden rounded-3xl shadow-2xl bg-white/90 dark:bg-navy/90 backdrop-blur-lg border border-gray-200/50 dark:border-navy/40">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <img src="https://picsum.photos/800/450?random=9" alt="Chiropractic Center" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-brand/40 rounded-full opacity-0 group-hover:opacity-70 group-hover:animate-ping transition-all duration-500"></div>
+                        <div class="absolute bottom-4 right-4 w-12 h-12 bg-blue/40 rounded-full opacity-0 group-hover:opacity-60 group-hover:animate-pulse transition-all duration-700"></div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+                        <div class="p-8 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <h5 class="text-xl font-bold mb-2">Chiropractic Center</h5>
+                            <p class="mb-4 opacity-90">Conversion-focused site with online intake forms and local SEO boost.</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="px-4 py-2 bg-brand rounded-lg hover:bg-brand/90 transition text-sm">Case Study</a>
+                                <a href="#" class="px-4 py-2 border border-white/30 rounded-lg hover:bg-white/10 transition text-sm">Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        {# <!-- Call to Action -->
+        <div class="text-center mt-20">
+            <div class="inline-block p-8 bg-white/80 dark:bg-navy/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200/50 dark:border-navy/40">
+                <h3 class="text-2xl font-bold text-navy dark:text-white mb-4">Ready to Join Our Success Stories?</h3>
+                <p class="text-charcoal/80 dark:text-gray-300 mb-6 max-w-md mx-auto">Let's create something extraordinary for your clinic that will make your competitors envious.</p>
+                <a href="#contact" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand to-blue text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                    Start Your Project
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div> #}
+
+    </div>
+</section>
+<!-- Contact CTA Section -->
+<section id="contact" class="relative py-24  bg-gradient-to-br from-navy via-slate-900 to-charcoal">
+  <div class="absolute inset-0 bg-gradient-to-r from-brand/10 to-blue/10 opacity-50"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Ready to Grow Your Clinic?</h2>
+    <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Let's create something extraordinary for your clinic that will make your competitors envious.</p>
+    <a href="#" class="inline-block px-12 py-4 bg-brand text-white font-bold text-lg rounded-xl shadow-lg hover:bg-brand/90 transition transform hover:-translate-y-1 hover:scale-105">Book Your Free Strategy Call</a>
+  </div>
+</section>
+    <!-- Testimonials Section -->
+    <section class="relative py-24 pb-36 bg-white dark:bg-navy/80">
+      <div class="absolute left-0 top-0 w-32 h-32 bg-gradient-to-br from-brand/10 to-blue/10 rounded-full blur-2xl opacity-30 pointer-events-none"></div>
+      <div class="absolute right-0 bottom-0 w-40 h-40 bg-gradient-to-tr from-blue/10 to-brand/10 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-navy dark:text-white mb-4">What Our Clients Say About Us</h2>
+          <p class="text-lg text-charcoal/80 dark:text-gray-200 max-w-2xl mx-auto">Real feedback from clinics and healthcare professionals we've helped grow.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-10">
+          <!-- Testimonial 1 -->
+          <div class="bg-slate-50 dark:bg-navy/70 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 dark:border-navy/40">
+            <div class="flex items-center mb-4">
+              <img src="{{ siteUrl }}assets/layout/testimonial.jpg" alt="Dr. Sarah Patel" class="w-14 h-14 rounded-full object-cover border-2 border-brand shadow-md mr-3">
+              <div>
+                <div class="flex items-center justify-center mb-1">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                </div>
+                <span class="font-semibold text-navy dark:text-white">Dr. Sarah Patel</span>
+                <div class="text-xs text-charcoal/60 dark:text-gray-400">Elite Aesthetics Clinic</div>
+              </div>
+            </div>
+            <p class="text-charcoal/80 dark:text-gray-200">"Fine Digital completely transformed our online presence. We saw a huge increase in bookings and our patients love the new website!"</p>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="bg-slate-50 dark:bg-navy/70 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 dark:border-navy/40">
+            <div class="flex items-center mb-4">
+              <img src="{{ siteUrl }}assets/layout/testimonial.jpg" alt="Dr. James Lee" class="w-14 h-14 rounded-full object-cover border-2 border-brand shadow-md mr-3">
+              <div>
+                <div class="flex items-center justify-center mb-1">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                </div>
+                <span class="font-semibold text-navy dark:text-white">Dr. James Lee</span>
+                <div class="text-xs text-charcoal/60 dark:text-gray-400">Wellness Spa</div>
+              </div>
+            </div>
+            <p class="text-charcoal/80 dark:text-gray-200">"The team at Fine Digital are true experts. Our Google Ads ROI has never been better and the support is fantastic."</p>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="bg-slate-50 dark:bg-navy/70 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 dark:border-navy/40">
+            <div class="flex items-center mb-4">
+              <img src="{{ siteUrl }}assets/layout/testimonial.jpg" alt="Dr. Maria Gomez" class="w-14 h-14 rounded-full object-cover border-2 border-brand shadow-md mr-3">
+              <div>
+                <div class="flex items-center justify-center mb-1">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><polygon points="10 1.5 12.59 7.36 18.9 7.64 13.97 11.64 15.54 17.86 10 14.27 4.46 17.86 6.03 11.64 1.1 7.64 7.41 7.36 10 1.5"/></svg>
+                </div>
+                <span class="font-semibold text-navy dark:text-white">Dr. Maria Gomez</span>
+                <div class="text-xs text-charcoal/60 dark:text-gray-400">Chiropractic Center</div>
+              </div>
+            </div>
+            <p class="text-charcoal/80 dark:text-gray-200">"From branding to SEO, Fine Digital delivered results beyond our expectations. Highly recommended for any clinic!"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+{# <!-- Floating CTA Button -->
+<div class="fixed bottom-8 right-8 z-40 hidden lg:block">
+  <a href="#contact" class="px-6 py-3 bg-white/90 dark:bg-navy/90 border-2 border-brand text-brand dark:text-white font-bold rounded-2xl shadow-2xl backdrop-blur-lg hover:bg-brand hover:text-white hover:border-brand transition-all duration-300 animate-bounce">
+    📞 Free Call
+  </a>
+</div> #}
+{% endblock %}
